@@ -2,6 +2,7 @@ import './ChatWindow.css';
 import {MessageData} from "../../interface/MessageData";
 import MessagesList from "./MessagesList";
 import ChatInput from "./ChatInput";
+import MessengerHeader from "./MessagerHeader";
 
 const messages: MessageData[] = [{
     id: '123',
@@ -13,6 +14,7 @@ const messages: MessageData[] = [{
 const ChatWindow = () => {
 
     return <section className="chat__container">
+        <MessengerHeader />
         <MessagesList  messages={messages} />
         <ChatInput />
     </section>

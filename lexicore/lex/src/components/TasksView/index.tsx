@@ -7,6 +7,7 @@ import TagsView from './TagsView';
 import CardsView from "./CardsView";
 import {TaskData} from "../../interface/TaskData";
 import Navbar from "../Navbar";
+import ViewWrapper from "../ViewWrapper";
 
 const tasks: TaskData[] = [
     {
@@ -49,26 +50,27 @@ const TasksView = () => {
         }
     };
 
-    return <section className="tasks-view__container">
-        <Navbar />
-        <div className="tasks-view__controls">
-            <ToggleButtonGroup
-                value={currView}
-                exclusive
-                onChange={changeView}
-            >
-                <ToggleButton value={ViewType.Tags}>
-                    <ViewAgendaIcon/>
-                </ToggleButton>
-                <ToggleButton value={ViewType.Cards}>
-                    <SpaceDashboardIcon/>
-                </ToggleButton>
-            </ToggleButtonGroup>
-        </div>
+    return (
+        <ViewWrapper>
+            <div className="tasks-view__controls">
+                <ToggleButtonGroup
+                    value={currView}
+                    exclusive
+                    onChange={changeView}
+                >
+                    <ToggleButton value={ViewType.Tags}>
+                        <ViewAgendaIcon/>
+                    </ToggleButton>
+                    <ToggleButton value={ViewType.Cards}>
+                        <SpaceDashboardIcon/>
+                    </ToggleButton>
+                </ToggleButtonGroup>
+            </div>
 
-        {currView === ViewType.Tags && <TagsView tasks={tasks}/>}
-        {currView === ViewType.Cards && <CardsView tasks={tasks}/>}
-    </section>
+            {currView === ViewType.Tags && <TagsView tasks={tasks}/>}
+            {currView === ViewType.Cards && <CardsView tasks={tasks}/>}
+        </ViewWrapper>
+    );
 }
 
 export default TasksView;
