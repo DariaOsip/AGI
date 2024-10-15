@@ -1,4 +1,3 @@
-import React from "react";
 import './RenderedDataView.css';
 import remarkGfm from "remark-gfm";
 import ReactMarkdown from "react-markdown";
