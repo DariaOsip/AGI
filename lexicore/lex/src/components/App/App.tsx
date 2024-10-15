@@ -13,12 +13,12 @@ function App() {
     const {isAuthenticated, loginWithRedirect, isLoading, user} = useAuth0();
 
     useEffect(() => {
-        if (!isAuthenticated || !user) {
-            //loginWithRedirect();
+        if ((!isAuthenticated || !user) && !isLoading) {
+            loginWithRedirect();
         }
-    }, [isAuthenticated, user]);
+    }, [isAuthenticated, user, isLoading]);
 
-    //if (!isAuthenticated || !user) return (<LoadingLayout />);
+    if (!isAuthenticated || !user || isLoading) return (<LoadingLayout />);
 
     return <LexicoreLayout />
 }
